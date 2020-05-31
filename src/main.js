@@ -10,7 +10,7 @@ import { Grid } from '@progress/kendo-vue-grid'
 
 Vue.component('Grid', Grid);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 /* eslint-disable no-new */
 new Vue({

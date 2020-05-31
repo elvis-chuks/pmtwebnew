@@ -50,7 +50,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .talk{
     background:rgb(228, 196, 222);
     margin-bottom:50px;

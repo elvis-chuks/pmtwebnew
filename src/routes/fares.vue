@@ -3,7 +3,7 @@
         <MainNav/>
         <main>
             <section class="intro">
-                <div class="intro-text">
+                <div class="intro-textf">
                     <h1>Route Fares</h1>
                     <p>Check for the cost of your travel before booking.</p>
                     <div class="fares" v-for="fare in fares" :key="fare.busclassid">
@@ -120,7 +120,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .loader-modal{
     width:90%;
     margin:auto;
@@ -168,19 +168,22 @@ hr{
 main{
     width:90%;
     margin:auto;
+    display:flex;
 }
-.intro-text{
+.intro-textf{
     color:white;
-    flex:1;
+    flex:2;
     margin:10px;
 }
 .intro-form{
-    flex:1;
+    flex:2;
     margin:10px;
+    display:flex;
+    justify-content: flex-end;
 }
-.intro-form select,button{
+/* .intro-form select,button{
     display:block;
-}
+} */
 .form{
     background:white;
     padding:50px;
@@ -192,6 +195,8 @@ main{
     display:flex;
     min-height:60vh;
     align-items: center;
+    width:100%;
+    margin:auto;
 }
 @media(max-width:528px){
     .intro{

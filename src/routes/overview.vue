@@ -125,7 +125,7 @@
                         <p>{{remark}}</p>
                     </div>
                     <div class="proceed" v-show="payTime">
-                        <button class="btn-lg" @click="initiate()">Pay with flutterwave</button>
+                        <button class="btn-lg" @click="initiate()">Pay</button>
                     </div>
                     <div class="proceed" v-show="otpTime">
                         <button class="btn-lg" @click="verifyOtp()">Verify Otp</button>

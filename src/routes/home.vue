@@ -6,6 +6,7 @@
             <h4>Where to next?</h4>
             <p>From here you're almost there.</p>
         </section>
+        
         <section class="book-form">
             <div class="group">
                 <select name="depot" id="depot" @change="zroute()">
@@ -28,12 +29,20 @@
                     {{route.routename}}
                     </option>
                 </select>
-                <input v-model="date" type="date" name="departuredate" id="departuredate" :min="min_max[0]" :max="min_max[1]" >
+                <!-- <input v-model="date" type="date" name="departuredate" id="departuredate" :min="min_max[0]" :max="min_max[1]" > -->
+                <select name="departuredare" id="departuredate" v-model="date">
+                    <option value="">Select departure date</option>
+                    <option
+                    v-for="date in min_max"
+                    :key="date"
+                    >{{ date }}</option>
+                </select>
                 <!-- <router-link tag="button" :to="{name:'Trips'}" id="search">Search</router-link> -->
                 <button @click="goTrips()"  id="search">Search</button>
             </div>
+            
         </section>
-        <section class="loader-modal" v-show="loading">
+        <section class="loader-modal" v-show="loading" style="z-index=100;">
             <div class="loader" id="loader"></div>
         </section>
         <section class="facilities">
@@ -212,8 +221,31 @@ export default {
 
       var min_day = new Date().getDate() + 1;
 
-      var max_day = min_day + parseInt(this.$store.getters.bookableDates) - 1;
       
+      
+      var month30 = [10,4,6,11]
+    //   var feb = [2]
+
+      if(month30.includes(month)){
+          if(min_day >= 30){
+              min_day = 1;
+              month += 1;
+          }
+      }
+      if(month == 2){
+          if (min_day >= 29){
+              min_day = 1;
+              month += 1;
+          }
+      }
+
+      if(!month30.includes(month) && month != 2){
+          if(min_day >= 31){
+              min_day = 1;
+              month += 1;
+          }
+      }
+    var max_day = min_day + parseInt(this.$store.getters.bookableDates) - 1;
       month = month.toString()
       min_day = min_day.toString()
       max_day = max_day.toString()
@@ -277,6 +309,9 @@ export default {
     margin-top:10px;
     animation: drop 1.5s ease;
 }
+.salutation p{
+    margin-top:10px;
+}
 .book-form .group{
     width:90%;
     margin:auto;
@@ -322,6 +357,7 @@ export default {
     justify-content: center;
     height:100%;
     margin-left:60px;
+    margin-bottom:50px;
 }
 
 
@@ -371,7 +407,7 @@ export default {
 .facilities{
     width:50%;
     margin:auto;
-    margin-top:50px;
+    /* margin-top:50px; */
     /* padding:20px; */
     color:#2F0054;
     animation: drop 1.5s ease;

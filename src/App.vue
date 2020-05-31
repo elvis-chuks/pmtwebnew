@@ -24,5 +24,8 @@ button{
   margin:0px;
   padding:0px;
   box-sizing: border-box;
+  outline: none;
+  -moz-outline-style: none; 
+  outline-style: none;
 }
 </style>

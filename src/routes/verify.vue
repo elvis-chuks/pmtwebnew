@@ -124,7 +124,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .tab{
     margin-top:50px;
 }
@@ -191,9 +191,9 @@ main{
     flex:1;
     margin:10px;
 }
-.intro-form select,button{
+/* .intro-form select,button{
     display:block;
-}
+} */
 .form{
     background:white;
     padding:50px;
@@ -205,6 +205,8 @@ main{
     display:flex;
     min-height:60vh;
     align-items: center;
+    width:100%;
+    margin: auto;
 }
 @media(max-width:528px){
     .intro{

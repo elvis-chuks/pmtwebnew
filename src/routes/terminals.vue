@@ -17,7 +17,7 @@
     </div>
 </template>
 
-<script>
+<script scoped>
 import MainNav from '@/components/mainnav'
 import Footer from '@/components/footer'
 export default {
