@@ -45,7 +45,7 @@
         <section class="loader-modal" v-show="loading" style="z-index=100;">
             <div class="loader" id="loader"></div>
         </section>
-        <section class="facilities">
+        <!-- <section class="facilities">
             <div class="facility-header">
                 <p>Facilities and Services of our Buses.</p>
             </div>
@@ -64,13 +64,9 @@
                     </div>
                 </div>
             </div>
-        </section>
-      </div>
-    
-    <main>
-        
+        </section> -->
         <section class="details">
-            <div class="mobile-app">
+            <div class="mobile-app right-slide" @click="newWindow()">
                 <p class="title">Book via our Mobile App</p>
                 <div class="mobile-content">
                     <div class="img">
@@ -82,11 +78,16 @@
                     </div>
                 </div>
             </div>
-            <div class="ussd">
+            <div class="ussd left-slide">
                 <p class="title">*452*X#</p>
                 <p class="small-title">Book via USSD</p>
             </div>
         </section>
+      </div>
+    
+    <main>
+        
+        
     </main>
     <Footer/>
   </div>
@@ -119,33 +120,37 @@ export default {
     // clear trips data from store
     this.$store.dispatch("clearTrips")
     // end clear
-    var isInViewport = function(elem){
-        var bounding = elem.getBoundingClientRect();
-        return (
-            bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            bounding.right <= (window.innerWidth || document.document.documentElement.clientWidth)
-        );
-    }
-    var details = document.querySelector('.details')
-    window.addEventListener('scroll',function (event){
-        var mobile = document.querySelector('.mobile-app');
-        var ussd = document.querySelector('.ussd')
-        if(mobile != null && ussd != null){
-            if(isInViewport(details)){
-                mobile.classList.add('right-scroll')
-                ussd.classList.add('left-slide')
-            }else{
-                mobile.classList.remove('right-scroll')
-                ussd.classList.remove('left-slide')
-            }
-        }
-    });
+    // var isInViewport = function(elem){
+    //     var bounding = elem.getBoundingClientRect();
+    //     return (
+    //         bounding.top >= 0 &&
+    //         bounding.left >= 0 &&
+    //         bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    //         bounding.right <= (window.innerWidth || document.document.documentElement.clientWidth)
+    //     );
+    // }
+    // var details = document.querySelector('.details')
+    // window.addEventListener('scroll',function (event){
+    //     var mobile = document.querySelector('.mobile-app');
+    //     var ussd = document.querySelector('.ussd')
+    //     if(mobile != null && ussd != null){
+    //         if(isInViewport(details)){
+    //             mobile.classList.add('right-scroll')
+    //             ussd.classList.add('left-slide')
+    //         }else{
+    //             mobile.classList.remove('right-scroll')
+    //             ussd.classList.remove('left-slide')
+    //         }
+    //     }
+    // });
 
 
   },
   methods:{
+      newWindow(){
+          var url = "https://play.google.com/store/apps/details?id=com.pmt.app"
+          window.location = url;
+      },
       update(){
           this.routeid = document.getElementById('route').value;
       },
@@ -447,6 +452,7 @@ export default {
     width:65%;
     margin:auto;
     display:flex;
+    padding-bottom:40px;
 }
 .mobile-app,.ussd{
     flex:1;
@@ -458,13 +464,14 @@ export default {
     padding:20px;
     border-radius:10px;
     border:none; 
+    cursor:pointer;
 }
 
 .right-slide{
-    animation: righty 2.4s ease;
+    animation: righty 1.4s ease;
 }
 .left-slide{
-    animation: left-slide 2.4s ease;
+    animation: left-slide 1.4s ease;
 }
 .mobile-content{
     display: flex;
@@ -491,8 +498,9 @@ export default {
 
 @media (max-width: 1024px) {
 .loader-modal{
-    margin-top:-20px;
-    flex-direction: column;
+    margin-top:-220px;
+    margin-bottom:20px;
+    /* flex-direction: column; */
 }
  .group{
      flex-direction: column;
@@ -542,6 +550,7 @@ export default {
 .details{
     flex-direction: column;
     width:90%;
+    /* margin-top:-180px; */
 }
 
 }
