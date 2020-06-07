@@ -28,4 +28,34 @@ button{
   -moz-outline-style: none; 
   outline-style: none;
 }
+select {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+  }
+  
+  select::-ms-expand {
+      display: none;
+  }
+  
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+      -webkit-animation: autofill 0s forwards;
+      animation: autofill 0s forwards;
+  }
+  
+  @keyframes autofill {
+      100% {
+          background: transparent;
+          color: inherit;
+      }
+  }
+  
+  @-webkit-keyframes autofill {
+      100% {
+          background: transparent;
+          color: inherit;
+      }
+  }
 </style>
