@@ -29,14 +29,14 @@
                     {{route.routename}}
                     </option>
                 </select>
-                <!-- <input v-model="date" type="date" name="departuredate" id="departuredate" :min="min_max[0]" :max="min_max[1]" > -->
-                <select name="departuredare" id="departuredate" v-model="date">
+                <input v-model="date" type="date" name="departuredate" id="departuredate" :min="min_max[0]" :max="min_max[1]" >
+                <!-- <select name="departuredare" id="departuredate" v-model="date">
                     <option value="">Select departure date</option>
                     <option
                     v-for="date in min_max"
                     :key="date"
                     >{{ date }}</option>
-                </select>
+                </select> -->
                 <!-- <router-link tag="button" :to="{name:'Trips'}" id="search">Search</router-link> -->
                 <button @click="goTrips()"  id="search">Search</button>
             </div>
