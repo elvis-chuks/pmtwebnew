@@ -1,6 +1,6 @@
 <template>
     <div>
-    <section class="trip-card">
+    <section @click="selectSeats()" class="trip-card">
         <div class="first-part">
             <div class="time-co">
                 <div class="time">
@@ -155,6 +155,7 @@ export default {
     padding:20px;
     border-radius:10px;
     margin-bottom:10px;
+    cursor:pointer;
 }
 
 

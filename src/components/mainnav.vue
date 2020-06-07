@@ -9,7 +9,7 @@
                 <label for="check" class="checkbtn">
                     <i class="fa fa-bars"></i>
                 </label>
-                    <img src="../assets/pmt_log.png" alt="logo" class="logo">
+                    <img src="../assets/pmt_log.png" alt="logo" class="logo" @click="goHome()">
 
                     <ul class="nav-links">
                         <li><a href="/" class="nav-link">Home</a></li>
@@ -27,7 +27,12 @@
 
 <script>
 export default {
-    name:"MainNav"
+    name:"MainNav",
+    methods:{
+        goHome(){
+            this.$router.push({name:'HelloWorld'})
+        }
+    }
 }
 </script>
 
@@ -51,6 +56,7 @@ nav{
     padding:0 50px;
     width:300px;
     margin-top:10px;
+    cursor:pointer;
 }
 nav ul{
     float:right;
