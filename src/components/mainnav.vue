@@ -106,6 +106,13 @@ a.active,a:hover{
     
 }
 
+@media(max-width: 340px){
+    .logo{
+        margin-top:10px;
+        width:250px;
+    }
+}
+
 @media(max-width:856px){
     .checkbtn{
         display:block;
