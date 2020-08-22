@@ -29,7 +29,7 @@
                     {{route.routename}}
                     </option>
                 </select>
-                <input v-model="date" type="date" name="departuredate" id="departuredate" :min="min_max[0]" :max="min_max[1]" >
+                <input v-model="date" type="date" name="departuredate" id="departuredate" :min="min_max[0]" :max="min_max[1]" @input="checkDateEntry()">
                 <!-- <select name="departuredare" id="departuredate" v-model="date">
                     <option value="">Select departure date</option>
                     <option
@@ -147,6 +147,12 @@ export default {
 
   },
   methods:{
+      checkDateEntry(){
+          if(!this.min_max.includes(this.date)){
+              this.date = "";
+          }
+          console.log(this.date)
+      },
       newWindow(){
           var url = "https://play.google.com/store/apps/details?id=com.pmt.app"
           window.location = url;
@@ -315,7 +321,7 @@ export default {
     animation: drop 1.5s ease;
 }
 .salutation p{
-    margin-top:10px;
+    padding-top:6px;
 }
 .book-form .group{
     width:90%;

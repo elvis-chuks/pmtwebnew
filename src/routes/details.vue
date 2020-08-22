@@ -8,17 +8,36 @@
                 <div class="inputs">
                     <div class="first-group">
                         <div class="form-group number">
-                            <input type="text" v-model="number" placeholder="Phone Number" class="form-control" maxlength="11" @input="checkBook()">
+                            <label for="number" class="label">Phone Number</label>
+                            <!-- placeholder="Phone Number" -->
+                            <input type="text" id="number" v-model="number"  class="form-control" maxlength="11" @input="checkBook()">
                         </div>
                         <div class="form-group">
-                            <select v-model="title" name="title" id="title" class="form-control">
-                                <option>Mr</option>
+                            <label for="title" class="label">Title</label>
+                            <select v-model="title" name="title" id="title" class="form-control" placeholder="Title">
+                                <option selected disabled>Title</option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Mrs.">Mrs.</option>
+                                <option value="Chief">Chief</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Alhaji">Alhaji</option>
+                                <option value="Mazi">Mazi</option>
+                                <option value="Oba">Oba</option>
+                                <option value="Nze">Nze</option>
+                                <option value="Obi">Obi</option>
+                                <option value="Deacon">Deacon</option>
+                                <option value="Rev">Rev</option>
+                                <option value="Fr.">Fr.</option>
+                                <option value="Igwe">Igwe</option>
+                                <option value="NA">NA</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select v-model="gender" name="gender" id="title" class="form-control">
-                                <option>Male</option>
-                                <option>Female</option>
+                            <label for="gender" class="label">Gender</label>
+                            <select v-model="gender" name="gender" id="gender" class="form-control">
+                                <option selected disabled>Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                     </div>
@@ -138,6 +157,7 @@ export default {
                 nextnumber:this.nextnumber,
                 title:this.title,
             }
+            console.log(payload)
 
             this.$store.commit("updateTrip",payload);
             this.$router.push({name:'overview'})
@@ -204,6 +224,14 @@ export default {
 </script>
 
 <style scoped>
+
+.label{
+    font-size:11px;
+    margin-left:5px;
+    color:grey;
+}
+
+
 .first-group,.second-group,.third-group,.fourth-group{
     display: flex;
 }

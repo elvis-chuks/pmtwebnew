@@ -22,7 +22,7 @@
         <div class="bus-co">
             <div class="items">
                 <img src="../assets/bus1.jpg" alt="bus">
-                <p class="canceled">{{tripData.freeSeats}} seats available</p>
+                <p class="canceled">{{tripData.freeSeats - 6}} seats available</p>
                 <p class="price">₦ {{tripData.price}}</p>
             </div>
         </div>
@@ -156,6 +156,12 @@ export default {
     border-radius:10px;
     margin-bottom:10px;
     cursor:pointer;
+    transition: 0.6s;
+}
+
+.trip-card:hover{
+    box-shadow: 0px 3px 5px 3px rgba(01, 02, 11, 0.1);
+    transition: 0.6s;
 }
 
 

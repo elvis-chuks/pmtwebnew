@@ -53,7 +53,21 @@
                         </div>
                         <div class="form-group">
                             <select v-model="tripData.title" name="title" id="title" class="form-control">
-                                <option>Mr</option>
+                                <option selected disabled>Title</option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Mrs.">Mrs.</option>
+                                <option value="Chief">Chief</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Alhaji">Alhaji</option>
+                                <option value="Mazi">Mazi</option>
+                                <option value="Oba">Oba</option>
+                                <option value="Nze">Nze</option>
+                                <option value="Obi">Obi</option>
+                                <option value="Deacon">Deacon</option>
+                                <option value="Rev">Rev</option>
+                                <option value="Fr.">Fr.</option>
+                                <option value="Igwe">Igwe</option>
+                                <option value="NA">NA</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -112,10 +126,10 @@
                     </div>
                     <div class="expiry">
                         <div class="form-group">
-                            <input type="text" v-model="cvv" placeholder="cvv" maxlength="3" class="form-control">
+                            <input type="password" v-model="cvv" placeholder="cvv" maxlength="3" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" v-model="pin" placeholder="Pin" maxlength="4" class="form-control">
+                            <input type="password" v-model="pin" placeholder="Pin" maxlength="4" class="form-control">
                         </div>
                     </div>
                     <div class="form-group" v-show="otpTime">
@@ -124,6 +138,9 @@
                     <div class="remark" style="text-align:center;">
                         <p>{{remark}}</p>
                     </div>
+                    <!-- <div class="proceed" v-show="payTime">
+                        <button class="btn-lg" @click="book()">Book</button>
+                    </div> -->
                     <div class="proceed" v-show="payTime">
                         <button class="btn-lg" @click="initiate()">Pay</button>
                     </div>
@@ -132,6 +149,9 @@
                     </div>
                     <div class="proceed" v-show="authPay">
                         <button class="btn-lg" @click="toBank()">Proceed to Bank</button>
+                        
+                        <p>Kinly close bank page after succesful payment</p>
+                        <p>Do not close this page !!!</p>
                     </div>
                     <div class="proceed" v-show="goHome">
                         <button class="btn-lg" @click="$router.push({name:'HelloWorld'})">Go Home</button>
@@ -235,8 +255,8 @@ export default {
                         DateOfBirth:this.tripData.DOB,
                         PhoneNumber:this.formatNumber(this.tripData.number),
                         EmailAddress:this.tripData.email,
-                        NextOfKinFullName:this.nextname,
-                        NextOfKinPhoneNumber:this.nextnumber,
+                        NextOfKinFullName:this.tripData.nextname,
+                        NextOfKinPhoneNumber:this.tripData.nextnumber,
                         BusesQueueID:this.tripData.busQueueID,
                         RoutePID:"",
                         RouteName:this.tripData.from + ' TO ' + this.tripData.to,
@@ -359,6 +379,7 @@ export default {
             })
         },
         book(){
+            console.log(this.tripData.gender)
             fetch(this.base_url+'/v2/book',{
                 method:"POST",
                 headers:{
@@ -369,10 +390,10 @@ export default {
                 Surname:this.tripData.lastName,
                 Gender:this.tripData.gender,
                 DateOfBirth:this.tripData.DOB,
-                PhoneNumber:this.tripData.number,
+                PhoneNumber:this.formatNumber(this.tripData.number),
                 EmailAddress:this.tripData.email,
-                NextOfKinFullName:this.nextname,
-                NextOfKinPhoneNumber:this.nextnumber,
+                NextOfKinFullName:this.tripData.nextname,
+                NextOfKinPhoneNumber:this.tripData.nextnumber,
                 BusesQueueID:this.tripData.busQueueID,
                 RoutePID:"",
                 RouteName:this.tripData.from + ' TO ' + this.tripData.to,
@@ -418,8 +439,8 @@ export default {
                 DateOfBirth:this.tripData.DOB,
                 PhoneNumber:this.tripData.number,
                 EmailAddress:this.tripData.email,
-                NextOfKinFullName:this.nextname,
-                NextOfKinPhoneNumber:this.nextnumber,
+                NextOfKinFullName:this.tripData.nextname,
+                NextOfKinPhoneNumber:this.tripData.nextnumber,
                 BusesQueueID:this.tripData.busQueueID,
                 RoutePID:"",
                 RouteName:this.tripData.from + ' TO ' + this.tripData.to,

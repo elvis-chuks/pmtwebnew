@@ -12,7 +12,7 @@
                         
                     </div>
                     <div class="seat">
-                        <button id="01" @click="registerSeat('01')"><img :src="blackseat" id="seat-01" alt="seat"></button>
+                        <button id="01" @click="registerSeat('01')" disabled><img :src="blackseat" id="seat-01" alt="seat" ></button >
                         <p>01</p>
                     </div>
                     <div class="seat">
@@ -26,7 +26,7 @@
                         <p>03</p>
                     </div>
                     <div class="seat">
-                        <button id="04" @click="registerSeat('04')"><img :src="blackseat" id="seat-04" alt="seat"></button>
+                        <button id="04" @click="registerSeat('04')" disabled><img :src="blackseat" id="seat-04" alt="seat" disabled></button>
                         <p>04</p>
                     </div>
                     <div class="seat">
@@ -43,7 +43,7 @@
                         <p>06</p>
                     </div>
                     <div class="seat">
-                        <button id="07" @click="registerSeat('07')"><img :src="blackseat" id="seat-07" alt="seat"></button>
+                        <button id="07" @click="registerSeat('07')" disabled><img :src="blackseat" id="seat-07" alt="seat" disabled></button>
                         <p>07</p>
                     </div>
                     <div class="seat">
@@ -60,7 +60,7 @@
                         <p>09</p>
                     </div>
                     <div class="seat">
-                        <button id="10" @click="registerSeat('10')"><img :src="blackseat" id="seat-10" alt="seat"></button>
+                        <button id="10" @click="registerSeat('10')" disabled><img :src="blackseat" id="seat-10" alt="seat" disabled></button>
                         <p>10</p>
                     </div>
                     <div class="seat">
@@ -77,11 +77,11 @@
                         <p>12</p>
                     </div>
                     <div class="seat">
-                        <button id="13" @click="registerSeat('13')"><img :src="blackseat" id="seat-13" alt="seat"></button>
+                        <button id="13" @click="registerSeat('13')" disabled><img :src="blackseat" id="seat-13" alt="seat" disabled ></button>
                         <p>13</p>
                     </div>
                     <div class="seat">
-                        <button id="14" @click="registerSeat('14')"><img :src="blackseat" id="seat-14" alt="seat"></button>
+                        <button id="14" @click="registerSeat('14')" disabled><img :src="blackseat" id="seat-14" alt="seat" disabled></button>
                         <p>14</p>
                     </div>
                     <div class="seat">
@@ -103,6 +103,9 @@
                         <img :src="redseat" alt="seat">
                         <p class="small-text">Booked Seat</p>
                     </div>
+                </div>
+                <div class="descp">
+                    <p class="small-text">Some seats have been disabled to follow current covid-19 guidelines </p>
                 </div>
             </div>
         </section>
@@ -137,6 +140,10 @@ export default {
         
         var bookedSeats = this.tripData.bookedSeats
         console.log(bookedSeats)
+        var disabled_seats = ["01","04","07","10","13","14"]
+        disabled_seats.forEach(seat => {
+            bookedSeats.push(seat)
+        })
         var cleanedSeats = []
         bookedSeats.forEach(seat => {
             if (seat.length == 1){
@@ -231,4 +238,5 @@ button{
 .seat p{
     margin-left:5px;
 }
+
 </style>
