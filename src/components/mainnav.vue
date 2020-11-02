@@ -15,6 +15,7 @@
                         <li><a href="/" class="nav-link">Home</a></li>
                         <li><router-link tag="a" :to="{name:'About'}" class="nav-link">About Us</router-link></li>
                         <li><router-link tag="a" :to="{name:'Contact'}" class="nav-link">Contact Us</router-link></li>
+                        <li><a href="https://blog.pmt.ng" class="nav-link">Blog</a></li>
                         <li><router-link tag="a" :to="{name:'Verify'}" class="nav-link">Verify Booking</router-link></li>
                         <li><router-link tag="a" :to="{name:'Fares'}" class="nav-link">Route Fare</router-link></li>
                         <li><router-link tag="a" :to="{name:'Terminals'}" class="nav-link">Our Terminals</router-link></li>

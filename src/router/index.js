@@ -10,10 +10,12 @@ import Contact from '@/routes/contact'
 import About from '@/routes/about'
 import Fares from '@/routes/fares'
 import Verify from '@/routes/verify'
+import NotFound from '@/routes/notFound'
 
 Vue.use(Router)
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -64,6 +66,10 @@ export default new Router({
       path: '/verifybooking',
       name: 'Verify',
       component: Verify
+    },
+    {
+      path:'*',
+      component: NotFound
     }
 
   ]
